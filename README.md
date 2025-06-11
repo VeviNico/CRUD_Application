@@ -24,6 +24,28 @@ It’s a simple, fully functional **CRUD** (Create, Read, Update, Delete) app bu
 
 ---
 
+State Management
+
+Requirements Fulfilled:
+
+- Posts are stored in local React state and managed via useState.
+- Data persists while the page remains open and is refreshed automatically via React Query caching.
+
+⭐ Bonus Potential
+
+- The app is ready for a backend integration.
+- You can easily switch from local state to a backend using Next.js API routes, Express.js, or even NestJS.
+
+---
+
+Backend options can include:
+
+- JSON file storage
+- In-memory Node.js storage
+- SQLite or other local databases
+
+---
+
 Future Improvements
 
 - Add backend API support or database integration
