@@ -16,7 +16,7 @@ export default function Home() {
   const create = useMutation({
     mutationFn: () => createPost(title, desc),
     onSuccess: () => {
-      queryClient.invalidateQueries(['posts'])
+      queryClient.invalidateQueries({ queryKey: ['posts'] });
       setTitle('')
       setDesc('')
     }
