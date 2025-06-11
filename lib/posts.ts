@@ -1,5 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
 
+// lib/posts.ts
+
 export type Post = {
   id: string;
   title: string;
@@ -10,10 +12,12 @@ export type Post = {
 
 let posts: Post[] = [];
 
-export async function getPosts(): Promise<Post[]> {
-  return posts;
+// GET all posts
+export function getPosts(): Promise<Post[]> {
+  return Promise.resolve(posts);
 }
 
+// CREATE a new post
 export async function createPost(title: string, description: string): Promise<Post> {
   const newPost: Post = {
     id: crypto.randomUUID(),
@@ -26,20 +30,18 @@ export async function createPost(title: string, description: string): Promise<Po
   return newPost;
 }
 
-export async function deletePost(id: string): Promise<void> {
-  posts = posts.filter((post) => post.id !== id);
+// UPDATE an existing post
+export async function updatePost(id: string, title: string, description: string): Promise<Post | null> {
+  const post = posts.find((p) => p.id === id);
+  if (!post) return null;
+
+  post.title = title;
+  post.description = description;
+  post.updatedAt = new Date().toISOString();
+  return post;
 }
 
-export async function updatePost(id: string, title: string, description: string): Promise<Post | null> {
-  const index = posts.findIndex((post) => post.id === id);
-  if (index === -1) return null;
-
-  posts[index] = {
-    ...posts[index],
-    title,
-    description,
-    updatedAt: new Date().toISOString(),
-  };
-
-  return posts[index];
+// DELETE a post
+export async function deletePost(id: string): Promise<void> {
+  posts = posts.filter((p) => p.id !== id);
 }
