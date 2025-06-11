@@ -36,6 +36,12 @@ Future Improvements
 
 ---
 
+Live Demo
+
+Deployed via Vercel → Coming soon (Problems with installing Git 2.49.0 Setup)
+
+---
+
 ## 🛠 How to Run It
 
 ```bash
