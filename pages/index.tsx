@@ -14,13 +14,15 @@ export default function Home() {
   const [sortBy, setSortBy] = useState<SortOption>('date')
 
   const create = useMutation({
-    mutationFn: () => createPost(title, desc),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['posts'] });
-      setTitle('')
-      setDesc('')
-    }
-  })
+  mutationFn: async () => {
+    return await createPost(title, desc);
+  },
+  onSuccess: () => {
+    queryClient.invalidateQueries({ queryKey: ['posts'] });
+    setTitle('');
+    setDesc('');
+  }
+});
 
   const edit = useMutation({
   mutationFn: async () => {
