@@ -23,7 +23,17 @@ It’s a simple, fully functional **CRUD** (Create, Read, Update, Delete) app bu
 - [UUID](https://www.npmjs.com/package/uuid)
 
 ---
+Future Improvements
 
+- Add backend API support or database integration
+
+- Live search and filter
+
+- Multi-language support
+
+- Authentication and user-specific data
+
+---
 ## 🛠 How to Run It
 
 ```bash
