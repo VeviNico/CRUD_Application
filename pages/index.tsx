@@ -23,17 +23,16 @@ export default function Home() {
   })
 
   const edit = useMutation({
-    mutationFn: () => {
-      if (!editingPost) return null
-      return updatePost(editingPost.id, title, desc)
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries(['posts'])
-      setEditingPost(null)
-      setTitle('')
-      setDesc('')
-    }
-  })
+  mutationFn: async () => {
+    return await updatePost(editingPost!.id, title, desc); // ensure this always returns something
+  },
+  onSuccess: () => {
+    queryClient.invalidateQueries({ queryKey: ['posts'] });
+    setTitle('');
+    setDesc('');
+    setEditingPost(null);
+  }
+});
 
   const remove = useMutation({
     mutationFn: (id: string) => deletePost(id),
